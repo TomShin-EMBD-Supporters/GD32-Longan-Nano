@@ -28,15 +28,13 @@ void main(void)
 
         if (state == 0)   
         {
-            temperature = values[2] ;
-            humidity = values[0];
-            int rest_T =  values[3];
-            int rest_H = values[1]; 
-
-           sprintf((char*)text, "Temp: %d.%d C", (int)temperature, rest_T);
+            temperature = values[2] + values[3] * 0.1 ;
+            humidity = values[0] + values[1] * 0.1;
+    
+           sprintf((char*)text, "Temp: %.2f C", temperature);
           OLED_print_string(0, 2, text);
 
-          sprintf((char*)text, "Humid: %d.%d %%", (int)humidity, rest_H);
+          sprintf((char*)text, "Humid: %.2f %%", humidity);
           OLED_print_string(0, 4, text);
 
         }
