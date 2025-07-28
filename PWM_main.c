@@ -22,7 +22,7 @@ int main(void) {
 
     while (1) {
       
-       timer_channel_output_pulse_value_config(TIMER0, TIMER_CH_1, duty);
+       timer_channel_output_pulse_value_config(TIMER0, TIMER_CH_0, duty);
         
       
         if (direction == 1) {
@@ -64,7 +64,7 @@ void PWM_init(void) {
     rcu_periph_clock_enable(RCU_AF);
     rcu_periph_clock_enable(RCU_TIMER0);
 
-    gpio_init(GPIOA, GPIO_MODE_AF_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_9);  // PA9 = TIMER0_CH1
+    gpio_init(GPIOA, GPIO_MODE_AF_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_8);  // PA8 = TIMER0_CH0
 
     timer_parameter_struct timer_initpara;
     timer_oc_parameter_struct timer_ocinitpara;
@@ -84,15 +84,15 @@ void PWM_init(void) {
     timer_ocinitpara.outputnstate    = TIMER_CCXN_DISABLE;
     timer_ocinitpara.ocpolarity      = TIMER_OC_POLARITY_HIGH;
     timer_ocinitpara.ocidlestate     = TIMER_OC_IDLE_STATE_LOW;
-    timer_channel_output_config(TIMER0, TIMER_CH_1, &timer_ocinitpara);
+    timer_channel_output_config(TIMER0, TIMER_CH_0, &timer_ocinitpara);
 
     
-    timer_channel_output_mode_config(TIMER0, TIMER_CH_1, TIMER_OC_MODE_PWM0);
-    timer_channel_output_shadow_config(TIMER0, TIMER_CH_1, TIMER_OC_SHADOW_DISABLE);
+    timer_channel_output_mode_config(TIMER0, TIMER_CH_0, TIMER_OC_MODE_PWM0);
+    timer_channel_output_shadow_config(TIMER0, TIMER_CH_0, TIMER_OC_SHADOW_DISABLE);
 
     
     timer_primary_output_config(TIMER0, ENABLE);
 
     timer_enable(TIMER0);
-    timer_channel_output_pulse_value_config(TIMER0, TIMER_CH_1, 0);
+    timer_channel_output_pulse_value_config(TIMER0, TIMER_CH_0, 0);
 }
