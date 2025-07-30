@@ -61,30 +61,30 @@ int main(void) {
 
      
         if (strcmp(sw1_status, last_sw1_status) != 0) {
-            OLED_clear_line(1);
-            OLED_print_string(0, 1, "SW1:");
-            OLED_print_string(40, 1, sw1_status);
+            OLED_clear_line(3);
+            OLED_print_string(0, 3, "SW1:");
+            OLED_print_string(40, 3, sw1_status);
             strcpy(last_sw1_status, sw1_status);
         }
 
         if (strcmp(led1_status, last_led1_status) != 0) {
-            OLED_clear_line(2);
-            OLED_print_string(0, 2, "LED1:");
-            OLED_print_string(40, 2, led1_status);
+            OLED_clear_line(4);
+            OLED_print_string(0, 4, "LED1:");
+            OLED_print_string(40, 4, led1_status);
             strcpy(last_led1_status, led1_status);
         }
 
         if (strcmp(sw2_status, last_sw2_status) != 0) {
-            OLED_clear_line(4);
-            OLED_print_string(0, 4, "SW2:");
-            OLED_print_string(40, 4, sw2_status);
+            OLED_clear_line(6);
+            OLED_print_string(0, 6, "SW2:");
+            OLED_print_string(40, 6, sw2_status);
             strcpy(last_sw2_status, sw2_status);
         }
 
         if (strcmp(led2_status, last_led2_status) != 0) {
-            OLED_clear_line(5);
-            OLED_print_string(0, 5, "LED2:");
-            OLED_print_string(40, 5, led2_status);
+            OLED_clear_line(7);
+            OLED_print_string(0, 7, "LED2:");
+            OLED_print_string(40, 7, led2_status);
             strcpy(last_led2_status, led2_status);
         }
 
@@ -114,7 +114,7 @@ void setup(void) {
     OLED_init();
     OLED_clear_buffer();
     OLED_fill(0x00);
-    OLED_print_string(10, 0, "SW + LED Status");
+    OLED_print_string(10, 1, "SW + LED Status");
 }
 
 uint8_t read_debounced(uint32_t port, uint32_t pin) {
